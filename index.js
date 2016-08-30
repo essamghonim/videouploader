@@ -20,7 +20,7 @@ var api = new ParseServer({
   liveQuery: {
     classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
   }
-  	push: {
+  /*	push: {
 		android: {
 			senderId: '', // The Sender ID of GCM
 			apiKey: '' // The Server API Key of GCM
@@ -32,7 +32,7 @@ var api = new ParseServer({
 			key: '/Users/essamghonim/Desktop/key.pem', // If not using the .p12 format, the path to the private key PEM to load from disk
 			production: false // Specifies which environment to connect to: Production (if true) or Sandbox
 		}
-	}
+	}*/
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
