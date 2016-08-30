@@ -50,23 +50,5 @@ Parse.Cloud.define("PushTest", function(request, response) {
       console.log("#### PUSH ERROR" + error.message);
   }, useMasterKey: true});
 
-  response.success('success');
-});
-Parse.Cloud.afterSave("Message", function(request) {
-  // Our "Message" class has a "text" key with the body of the message itself
-  var messageText = request.object.get('text');
-
-  var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only
-
-  Parse.Push.send({
-    where: pushQuery, // Set our Installation query
-    data: {
-      alert: "Message: " + messageText
-    }
-  }).then(function() {
-    // Push was successful
-  }, function(error) {
-    throw "Got an error " + error.code + " : " + error.message;
-  });
+  response.success('Hi essam hope that send notification');
 });
