@@ -46,9 +46,10 @@ Parse.Cloud.define("PushTest", function(request, response) {
     }
   }, { success: function() {
       console.log("#### PUSH OK");
+  response.success('This was successful');
   }, error: function(error) {
       console.log("#### PUSH ERROR" + error.message);
+  response.success('This was unsuccessful');
   }, useMasterKey: true});
 
-  response.success('Hi essam hope that send notification');
 });
