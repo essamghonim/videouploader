@@ -1,6 +1,6 @@
 
 Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hi Essam');
+  res.success('Hi Changed Essam');
 });
 Parse.Cloud.define("iosPushTest", function(request, response) {
 
