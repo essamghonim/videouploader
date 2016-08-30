@@ -1,6 +1,6 @@
 
 Parse.Cloud.define('hello', function(req, res) {
-  res.success('Hi Changed Essam');
+  res.success('Hi Complete change Essam');
 });
 Parse.Cloud.define("iosPushTest", function(request, response) {
 
@@ -25,4 +25,22 @@ Parse.Cloud.define("iosPushTest", function(request, response) {
   }, useMasterKey: true});
 
   response.success('success');
+});
+Parse.Cloud.afterSave("Message", function(request) {
+  // Our "Message" class has a "text" key with the body of the message itself
+  var messageText = request.object.get('text');
+
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only
+
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query
+    data: {
+      alert: "Message: " + messageText
+    }
+  }).then(function() {
+    // Push was successful
+  }, function(error) {
+    throw "Got an error " + error.code + " : " + error.message;
+  });
 });
