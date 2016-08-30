@@ -27,6 +27,7 @@ var api = new ParseServer({
 		},
 		ios: {
 			pfx: '/Users/essamghonim/Desktop/cert.p12', // the path and filename to the .p12 file you exported earlier. 
+			passphrase: '',
 			cert: '/Users/essamghonim/Desktop/cert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
 			bundleId: 'Com.ConnectLtd.Pal', // The bundle identifier associated with your app
 			key: '/Users/essamghonim/Desktop/key.pem', // If not using the .p12 format, the path to the private key PEM to load from disk
