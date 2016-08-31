@@ -37,19 +37,11 @@ Parse.Cloud.define("PushTest", function(request, response) {
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
 
-  Parse.Push.send({
-    where: pushQuery, // Set our Installation query                                                                                                                                                              
+Parse.push.send({
+    where: pushQuery,
     data: {
-      alert: 'Test',
-      badge: 1,
-      sound: 'default'
+        alert: 'Hello!'
     }
-  }, { success: function() {
-      console.log("#### PUSH OK");
-  response.success('This was successful');
-  }, error: function(error) {
-      console.log("#### PUSH ERROR" + error.message);
-  response.success('This was unsuccessful');
-  }, useMasterKey: true});
+});
 
 });
