@@ -2,43 +2,28 @@
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi Complete change Essam');
 });
-Parse.Cloud.afterSave("SendPush", function(request) {
-var query = new Parse.Query(Parse.Installation);
-  query.exists("deviceToken");
-  var payload = {
-    alert: "YOUR_MESSAGE"
-      // you can add other stuff here...
-  };
-  Parse.Push.send({
-      data: payload,
-      where: query
-    }, {
-      useMasterKey: true
-    })
-    .then(function() {
-      response.success("Push Sent!");
-    }, function(error) {
-      response.error("Error while trying to send push " + error.message);
-    });
-});
-Parse.Cloud.define('Hey', function(req, res) {
-    var query = new Parse.Query(Parse.Installation);
-    query.equalTo('deviceToken', 'cd55c9c159d76100c4c12257cd639aa344ad9b025080f67b16aef57b4811c2af');
+Parse.Cloud.define("iosPushTest", function(request, response) {
 
-    Parse.Push.send({
-      where: query, // Set our Installation query
-      data: {
-        alert: "Willie Hayes injured by own pop fly."
-      }
-    },{
-      success: function() {
-        // Push was successful
-          res.success('HiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHiHi');
-      },
-      error: function(error) {
-        // Handle error
-          res.error(error);
-      }
-    },{ useMasterKey: true });
-      
+  // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
+  var params = request.params;
+  var user = request.user;
+
+  // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
+  var messageText = params.text;
+
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
+
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query                                                                                                                                                              
+    data: {
+      alert: "Message: " + messageText
+    }
+  }, { success: function() {
+      console.log("#### PUSH OK");
+  }, error: function(error) {
+      console.log("#### PUSH ERROR" + error.message);
+  }, useMasterKey: true});
+
+  response.success('success');
 });
