@@ -17,6 +17,13 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'essamghonimaucbrunel03121993',
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse',  // Don't forget to change to https if needed
+  	push: {
+    ios: {
+      pfx: '/Users/essamghonim/Desktop/NewCert.p12',
+      bundleId: 'Com.ConnectLtd.Pal',
+      production: false
+    }
+  },
   	liveQuery: {
 classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
 }
