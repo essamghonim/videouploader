@@ -23,7 +23,7 @@ var api = new ParseServer({
       apiKey: '' // The Server API Key of GCM
     },
     ios: {
-      pfx:  __dirname + 'Certificates.p12', // The filename of private key and certificate in PFX or PKCS12 format from disk  
+      pfx:  __dirname + '/Certificates.p12', // The filename of private key and certificate in PFX or PKCS12 format from disk  
       passphrase: '', // optional password to your p12
       //cert: __dirname + '/cert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
       //key: __dirname + '/key.pem', // If not using the .p12 format, the path to the private key PEM to load from disk
