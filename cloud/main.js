@@ -5,6 +5,7 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.define("iosPushTest", function(request, response) {
 Parse.initialize("essamghonimaucbrunel03121993", "myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*");
 var pushQuery = new Parse.Query(Parse.Installation);
+pushQuery.equalTo('deviceType', 'ios');
 Parse.Push.send({
 data: {
 alert: 'The Giants Mets 2-3.',
