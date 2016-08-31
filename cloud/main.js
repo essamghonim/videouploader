@@ -34,8 +34,7 @@ Parse.Cloud.define("PushTest", function(request, response) {
 
   // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
   var messageText = params.text;
-  var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
+  var pushQuery = new Parse.Query(Parse.Installation);                                                                                                                                        
 
 Parse.Push.send({
       where: pushQuery, // Set our Installation query                                                                                                                                                              
