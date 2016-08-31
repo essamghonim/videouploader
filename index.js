@@ -4,7 +4,6 @@
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
-var devCertPath = path.resolve(__dirname, 'NewCert.p12');
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 
 if (!databaseUri) {
@@ -20,7 +19,7 @@ var api = new ParseServer({
   VERBOSE: true,
   	push: {
     ios: {
-      pfx: devCertPath,
+      pfx: __dirname + '/NewCert.p12',
       bundleId: 'Com.ConnectLtd.Pal',
       production: false
     }
