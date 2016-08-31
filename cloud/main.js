@@ -22,3 +22,18 @@ console.log('##### PUSH ERROR');
 useMasterKey: true
 });
 });
+Parse.Cloud.define("Message", function(request, response) {
+  // Our "Message" class has a "text" key with the body of the message itself
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query
+    data: {
+      alert: "Message: "
+    }
+  }).then(function() {
+    // Push was successful
+  }, function(error) {
+    throw "Got an error " + error.code + " : " + error.message;
+  });
+});
