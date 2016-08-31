@@ -2,14 +2,6 @@
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi Complete change Essam');
 });
-arse.Cloud.define("search", function(request, response) {
-  var query = new Parse.Query("UserUpdated");
-  query.find().then(function(results) {
-    response.success(locations);
-  }, function(error) {
-    response.error(error);
-  });
-});
 Parse.Cloud.define("iosPushTest", function(request, response) {
 
   // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
