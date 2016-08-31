@@ -19,8 +19,8 @@ var api = new ParseServer({
   serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse',  // Don't forget to change to https if needed
   push: {
 	ios: {
-		pfx: 'cert.p12', // the path and filename to the .p12 file you exported earlier. 
-		passphrase: '',			
+		pfx: 'NewCert.p12', // the path and filename to the .p12 file you exported earlier. 
+		passphrase: 'drenchula7',			
 		cert: 'cert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
 		bundleId: 'Com.ConnectLtd.Pal', // The bundle identifier associated with your app
 		key: 'key.pem', // If not using the .p12 format, the path to the private key PEM to load from disk
