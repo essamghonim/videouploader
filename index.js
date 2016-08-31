@@ -19,7 +19,7 @@ var api = new ParseServer({
   VERBOSE: true,
   	push: {
     ios: {
-      pfx: __dirname + '/NewCert.p12',
+      pfx: __dirname + '/Certificates.p12',
       bundleId: 'Com.ConnectLtd.Pal',
       production: false
     }
