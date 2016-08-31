@@ -27,27 +27,19 @@ Parse.Cloud.define("iosPushTest", function(request, response) {
   response.success('success');
 });
 Parse.Cloud.define("PushTest", function(request, response) {
-
-  // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
-  var params = request.params;
-  var user = request.user;
-
-  // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
-  var messageText = params.text;
-  var pushQuery = new Parse.Query(Parse.Installation);                                                                                                                                        
-
-Parse.Push.send({
-      where: pushQuery, // Set our Installation query                                                                                                                                                              
-    data: {
-      alert: "In the name of God"
-    }
-    }, {
-      useMasterKey: true
-    })
-    .then(function() {
-      response.success("Push Sent!");
-    }, function(error) {
-      response.error("Error while trying to send push " + error.message);
-    });
+var query = new Parse.Query(Parse.Installation);
+Parse.Push.send({ 
+  where: query,
+  data: {
+    alert: "When do we take to outer space"
+  }
+}, {
+  success: function() {
+    console.log("Push was successful");
+  },
+  error: function(error) {
+    console.error(error);
+  }
+});
 
 });
