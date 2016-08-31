@@ -38,8 +38,10 @@ Parse.Cloud.define("PushTest", function(request, response) {
   pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
 
 Parse.Push.send({
-      data: "In the name of God",
-      where: query
+      where: pushQuery, // Set our Installation query                                                                                                                                                              
+    data: {
+      alert: "In the name of God"
+    }
     }, {
       useMasterKey: true
     })
