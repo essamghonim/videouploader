@@ -18,10 +18,6 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse',  // Don't forget to change to https if needed
   push: {
-    android: {
-      senderId: '', // The Sender ID of GCM
-      apiKey: '' // The Server API Key of GCM
-    },
     ios: {
       pfx:  __dirname + '/Certificates.p12', // The filename of private key and certificate in PFX or PKCS12 format from disk  
       passphrase: '', // optional password to your p12
