@@ -37,30 +37,8 @@ Parse.Cloud.define("PushTest", function(request, response) {
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
 
-Parse.push.send({
-    where: pushQuery,
-    data: {
-        alert: 'Hello!'
-    }
-});
-
-});
-Parse.Cloud.afterSave("SendPush", function(request) {
-
-
-  var query = new Parse.Query(Parse.Installation);
-  query.exists("deviceToken");
-
-  // here you can add other conditions e.g. to send a push to sepcific users or channel etc.
-
-  var payload = {
-    alert: "YOUR_MESSAGE"
-      // you can add other stuff here...
-  };
-
-
-  Parse.Push.send({
-      data: payload,
+Parse.Push.send({
+      data: "In the name of God",
       where: query
     }, {
       useMasterKey: true
@@ -70,4 +48,5 @@ Parse.Cloud.afterSave("SendPush", function(request) {
     }, function(error) {
       response.error("Error while trying to send push " + error.message);
     });
+
 });
