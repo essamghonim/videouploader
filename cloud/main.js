@@ -2,6 +2,10 @@
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi Complete change Essam');
 });
+Parse.Cloud.define('testParagraph', function(req, res) {
+  console.log("received......... this is a console log for a test function that will print out a paragraph as a test");
+  res.success('Hi, this is the start of a new test function that will print out a paragraph');
+});
 Parse.Cloud.define("iosPushTest", function(request, response) {
 
   // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
