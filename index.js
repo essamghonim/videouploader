@@ -18,14 +18,19 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
   serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse',  // Don't forget to change to https if needed
   push: {
-	ios: {
-		pfx: 'Certificates.p12', // the path and filename to the .p12 file you exported earlier. 			
-		//cert: __dirname + '/cert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
-		bundleId: 'Com.ConnectLtd.Pal', // The bundle identifier associated with your app
-		//key: __dirname + '/key.pem', // If not using the .p12 format, the path to the private key PEM to load from disk
-		production: false // Specifies which environment to connect to: Production (if true) or Sandbox
-		}
-	}
+    android: {
+      senderId: '', // The Sender ID of GCM
+      apiKey: '' // The Server API Key of GCM
+    },
+    ios: {
+      pfx:  __dirname + 'Certificates.p12', // The filename of private key and certificate in PFX or PKCS12 format from disk  
+      passphrase: '', // optional password to your p12
+      //cert: __dirname + '/cert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
+      //key: __dirname + '/key.pem', // If not using the .p12 format, the path to the private key PEM to load from disk
+      bundleId: 'Com.ConnectLtd.Pal', // The bundle identifier associate with your app
+      production: false // Specifies which environment to connect to: Production (if true) or Sandbox
+    }
+  }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
