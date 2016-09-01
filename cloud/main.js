@@ -11,12 +11,12 @@ Parse.Cloud.afterSave("EA2iWMF1H3D123PntxOaGI0jS", function(request) {
             data: {
               alert: "New message: Hello Essam"
              }
-            }, {
-      success: function() {
-      // Push was successful
-          },
-      error: function(error) {
-        throw "Got an error " + error.code + " : " + error.message;
-          }
-            });
+        }, {
+      useMasterKey: true
+    })
+    .then(function() {
+      response.success("Push Sent!");
+    }, function(error) {
+      response.error("Error while trying to send push " + error.message);
+    });
 });
