@@ -2,29 +2,28 @@
 Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi Complete change Essam');
 });
-Parse.Cloud.define("sendPushToUser", function(request, response) {
-  var senderUser = request.user;
-  var recipientUserId = request.params.recipientId;
-  var message = request.params.message;
-  if (senderUser.get("friendIds").indexOf(recipientUserId) === -1) {
-    response.error("The recipient is not the sender's friend, cannot send push.");
-  }
-  if (message.length > 140) 
-  {
-    message = message.substring(0, 137) + "...";
-  }
-  var recipientUser = new Parse.User();
-  recipientUser.id = recipientUserId;
+Parse.Cloud.define("iosPushTest", function(request, response) {
+
+  // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
+  var params = request.params;
+  var user = request.user;
+
+  // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
+  var messageText = params.text;
+
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo("user", recipientUser);
+  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
+
   Parse.Push.send({
-    where: pushQuery,
+    where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
-      alert: message
+      alert: "Message: " + messageText
     }
-  }).then(function() {
-      response.success("Push was sent successfully.")
-  }, function(error) {
-      response.error("Push failed to send with error: " + error.message);
-  });
+  }, { success: function() {
+      console.log("#### PUSH OK");
+  }, error: function(error) {
+      console.log("#### PUSH ERROR" + error.message);
+  }, useMasterKey: true});
+
+  response.success('success');
 });
