@@ -1,5 +1,18 @@
 
 Parse.Cloud.define('hello', function(req, res) {
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
+
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query                                                                                                                                                              
+    data: {
+      alert: "Message: Essam"
+    }
+  }, { success: function() {
+      console.log("#### PUSH OK");
+  }, error: function(error) {
+      console.log("#### PUSH ERROR" + error.message);
+  }, useMasterKey: true});
   res.success('Hi Complete change Essam');
 });
 Parse.Cloud.define('pushChannelTest', function(request, response) {
