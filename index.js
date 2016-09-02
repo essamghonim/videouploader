@@ -49,6 +49,7 @@ var api = new ParseServer({
   push: pushConfig,
   filesAdapter: filesAdapter,
   verbose: true,
+  debug: apn,
   serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse'  // needed for Parse Cloud and push notifications
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
