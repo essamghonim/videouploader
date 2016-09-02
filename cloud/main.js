@@ -73,12 +73,13 @@ Parse.Cloud.define("iosPushTest", function(request, response) {
   // request has 2 parameters: params passed by the client and the authorized user                                                                                                                               
   var params = request.params;
   //var user = request.user;
-
+var user = new Parse.User();
+user.id = 'ntxOaGI0jS';    
   // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
   var messageText = params.text;
 
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo('deviceType', 'ios');                                                                                                                                          
+  pushQuery.equalTo('user', user);                                                                                                                                        
 
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
