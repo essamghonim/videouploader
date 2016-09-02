@@ -19,8 +19,8 @@ if (process.env.GCM_SENDER_ID && process.env.GCM_API_KEY) {
 if (process.env.APNS_ENABLE) {
     pushConfig['ios'] = [
         {
-            pfx: 'ParsePushDevelopmentCertificate.p12', // P12 file only
-            bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
+            pfx: 'Certificates.p12', // P12 file only
+            bundleId: 'Com.ConnectLtd.Pal',  // change to match bundleId
             production: false // dev certificate
         }
     ]
@@ -38,19 +38,13 @@ if (process.env.S3_ENABLE) {
     );
 }
 var api = new ParseServer({
-  databaseURI: 'mongodb://heroku_6zwn7b5f:ob6ajleb92b08h3v3c22ds6pbk@ds023603.mlab.com:23603/heroku_6zwn7b5f',
-  cloud: __dirname + '/cloud/main.js',
-  appId: 'essamghonimaucbrunel03121993',
-  masterKey: 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
-  serverURL: 'https://palscoob.herokuapp.com/parse',  // Don't forget to change to https if needed
-  VERBOSE: true,
-  	push: {
-    ios: {
-      pfx: __dirname + '/Certificates.p12',
-      bundleId: 'Com.ConnectLtd.Pal',
-      production: false
-    }
-  },
+  databaseURI: databaseUri || 'mongodb://heroku_6zwn7b5f:ob6ajleb92b08h3v3c22ds6pbk@ds023603.mlab.com:23603/heroku_6zwn7b5f',
+  cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
+  appId: process.env.APP_ID || 'essamghonimaucbrunel03121993',
+  masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
+  serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse',  // Don't forget to change to https if needed
+  push: pushConfig,
+  filesAdapter: filesAdapter,
   	liveQuery: {
 classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
 }
@@ -61,29 +55,16 @@ classNames: ["Posts", "Comments"] // List of classes to support for query subscr
 
 var app = express();
 
-// Serve static assets from the /public folder
-app.use('/public', express.static(path.join(__dirname, '/public')));
-
 // Serve the Parse API on the /parse URL prefix
 var mountPath = process.env.PARSE_MOUNT || '/parse';
 app.use(mountPath, api);
 
 // Parse Server plays nicely with the rest of your web routes
 app.get('/', function(req, res) {
-  res.status(200).send('I dream of being a website.  Please star the parse-server repo on GitHub!');
-});
-
-// There will be a test page available on the /test path of your server url
-// Remove this before launching your app
-app.get('/test', function(req, res) {
-  res.sendFile(path.join(__dirname, '/public/test.html'));
+  res.status(200).send('I dream of being a web site.');
 });
 
 var port = process.env.PORT || 1337;
-var httpServer = require('http').createServer(app);
-httpServer.listen(port, function() {
+app.listen(port, function() {
     console.log('parse-server-example running on port ' + port + '.');
 });
-
-// This will enable the Live Query real-time server
-ParseServer.createLiveQueryServer(httpServer);
