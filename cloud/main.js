@@ -78,7 +78,7 @@ Parse.Cloud.define("iosPushTest", function(request, response) {
   var messageText = params.text;
 
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo('deviceType', 'ios'); // targeting iOS devices only                                                                                                                                          
+  pushQuery.equalTo('_p_user', '_User$ntxOaGI0jS'); // targeting iOS devices only                                                                                                                                          
 
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
