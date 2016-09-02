@@ -3,12 +3,13 @@
 
 var express = require('express');
 var ParseServer = require('parse-server').ParseServer;
-var path = require('path');
-var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
+
+var databaseUri = process.env.DATABASE_URI || process.env.MONGOLAB_URI
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
+
 var pushConfig = {};
 
 if (process.env.GCM_SENDER_ID && process.env.GCM_API_KEY) {
@@ -37,17 +38,15 @@ if (process.env.S3_ENABLE) {
         {bucket: process.env.AWS_BUCKET_NAME, bucketPrefix: "", directAccess: true}
     );
 }
+
 var api = new ParseServer({
   databaseURI: databaseUri || 'mongodb://heroku_6zwn7b5f:ob6ajleb92b08h3v3c22ds6pbk@ds023603.mlab.com:23603/heroku_6zwn7b5f',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'essamghonimaucbrunel03121993',
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
-  serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse',  // Don't forget to change to https if needed
   push: pushConfig,
   filesAdapter: filesAdapter,
-  	liveQuery: {
-classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
-}
+  serverURL: process.env.SERVER_URL || 'http://pally.herokuapp.com/parse'  // needed for Parse Cloud and push notifications
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
