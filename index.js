@@ -23,7 +23,7 @@ if (process.env.APNS_ENABLE) {
             pfx: __dirname + 'HerokuCert.p12', // P12 file only
             //cert: __dirname + 'HerokuCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
             //key: __dirname + 'HerokuKey.pem', // If not using the .p12 format
-            bundleId: 'Com.ConnectLtd.Pal',  // change to match bundleId
+            bundleId: 'Com.ConnectLtd.PalBuddy',  // change to match bundleId
             production: false // dev certificate
         }
     ]
