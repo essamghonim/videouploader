@@ -4,7 +4,7 @@ Parse.Cloud.define('hello', function(req, res) {
 });
 Parse.Cloud.define("checkPrice", function(request, response) {
   var currentPriceQuery = new Parse.Query("UserUpdated");
-    currentPriceQuery.equalTo("username", "Pal Buddy");
+    currentPriceQuery.equalTo("username", "Omar Nabil");
     currentPriceQuery.find({
         success: function(results) {
             var obj = results[0];
