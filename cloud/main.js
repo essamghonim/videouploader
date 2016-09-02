@@ -1,6 +1,6 @@
 
 Parse.Cloud.define('hello', function(req, res) {
-  res.success(req.params.var1 + " " + req.params.var2);
+  res.success(req.params.firstVar + " " + req.params.secondVar);
 });
 Parse.Cloud.define("checkPrice", function(request, response) {
   var currentPriceQuery = new Parse.Query("UserUpdated");
