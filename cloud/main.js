@@ -15,6 +15,7 @@ Parse.Cloud.define("checkPrice", function(request, response) {
                   }, 
                 error: function (object, error) { 
                   response.error(error);
+                  console.log(error.message);
                 }
               });
         },
