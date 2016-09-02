@@ -79,7 +79,7 @@ user.id = 'ntxOaGI0jS';
   var messageText = params.text;
 
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo('user', user);                                                                                                                                        
+  pushQuery.equalTo('deviceType', 'ios');                                                                                                                                        
 
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
