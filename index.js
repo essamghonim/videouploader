@@ -9,7 +9,34 @@ var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
+var pushConfig = {};
 
+if (process.env.GCM_SENDER_ID && process.env.GCM_API_KEY) {
+    pushConfig['android'] = { senderId: process.env.GCM_SENDER_ID || '',
+                              apiKey: process.env.GCM_API_KEY || ''};
+}
+
+if (process.env.APNS_ENABLE) {
+    pushConfig['ios'] = [
+        {
+            pfx: 'ParsePushDevelopmentCertificate.p12', // P12 file only
+            bundleId: 'beta.codepath.parsetesting',  // change to match bundleId
+            production: false // dev certificate
+        }
+    ]
+}
+
+
+var filesAdapter = null;  // enable Gridstore to be the default
+if (process.env.S3_ENABLE) {
+    var S3Adapter = require('parse-server').S3Adapter;
+
+    filesAdapter = new S3Adapter(
+        process.env.AWS_ACCESS_KEY,
+        process.env.AWS_SECRET_ACCESS_KEY,
+        {bucket: process.env.AWS_BUCKET_NAME, bucketPrefix: "", directAccess: true}
+    );
+}
 var api = new ParseServer({
   databaseURI: 'mongodb://heroku_6zwn7b5f:ob6ajleb92b08h3v3c22ds6pbk@ds023603.mlab.com:23603/heroku_6zwn7b5f',
   cloud: __dirname + '/cloud/main.js',
