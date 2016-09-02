@@ -94,5 +94,5 @@ user.id = 'RO9GEfkgI6';
       console.log("#### PUSH ERROR" + error.message);
   }, useMasterKey: true});
 
-  //response.success('success');
+  response.success('success');
 });
