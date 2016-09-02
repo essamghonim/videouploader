@@ -20,7 +20,7 @@ if (process.env.GCM_SENDER_ID && process.env.GCM_API_KEY) {
 if (process.env.APNS_ENABLE) {
     pushConfig['ios'] = [
         {
-            pfx: 'Certificates.p12', // P12 file only
+            pfx: 'HerokuCert.p12', // P12 file only
             bundleId: 'Com.ConnectLtd.Pal',  // change to match bundleId
             production: false // dev certificate
         }
