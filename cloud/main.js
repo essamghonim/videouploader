@@ -84,7 +84,7 @@ user.id = 'ntxOaGI0jS';
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
-      alert: "Good Luck",
+      alert: "Best Of Luck",
     badge: 1,
     sound: 'default'
     }
