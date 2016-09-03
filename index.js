@@ -48,9 +48,9 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
   push: {
     ios: {
-      pfx: __dirname + '/AppCert.p12',
+      pfx: __dirname + '/HerokuCert.p12',
       bundleId: 'Com.ConnectLtd.PalBuddy',
-      production: true // Dev
+      production: false // Dev
     }
   },
   //filesAdapter: filesAdapter,
