@@ -98,32 +98,24 @@ Parse.Cloud.useMasterKey();
 
 });
   Parse.Cloud.define("PushNotification", function(request, response) {
-      console.log('sending push');
-      var currentPriceQuery = new Parse.Query("UserUpdated");
-      console.log(currentPriceQuery);
-    var Installation = new Parse.Query(Parse.Installation);
-      console.log(Installation);
-
-    Parse.Push.send({
-    useMasterKey: true,
-        where: Installation,
-      data: {
-//or you can put "" to not do a custom alert
-        alert: request.params.Message,
-        badge: 0,
-        sound: 'default'
-      }
-    }, {
-      useMasterKey: true,
-      success: function() {
-        // Push sent!
-      console.log('Push sent');
-            response.success('success');
-
-      },
-      error: function(error){
-    console.error(error);
+var user = new Parse.User();
+user.id = request.params.ID;                                                                                                                                    
+var messageText = request.params.text;
+Parse.Cloud.useMasterKey();
+var pushQuery = new Parse.Query(Parse.Installation);
+pushQuery.equalTo('user', user);                                                                                                                                        
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query                                                                                                                                                              
+    data: {
+      alert: messageText,
+    badge: 1,
+    sound: 'default'
     }
-
-    });
+  }, { success: function() {
+      //console.log("#### PUSH OK");
+  response.success('Push Sent!');
+  }, error: function(error) {
+      //console.log("#### PUSH ERROR" + error.message);
+  response.success('Error ' + error.message);
+  }, useMasterKey: true});
     });
