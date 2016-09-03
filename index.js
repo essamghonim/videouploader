@@ -48,9 +48,9 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
   push: {
     ios: {
-      pfx: __dirname + 'AppCert.p12',
-      cert: __dirname + 'AppCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
-      key: __dirname + 'AppKey.pem', // If not using the .p12 format
+      pfx: __dirname + '/AppCert.p12',
+      cert: __dirname + '/AppCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
+      key: __dirname + '/AppKey.pem', // If not using the .p12 format
       bundleId: 'Com.ConnectLtd.PalBuddy',
       production: true // Dev
     }
