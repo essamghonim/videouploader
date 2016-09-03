@@ -77,7 +77,7 @@ var user = new Parse.User();
 user.id = request.params.ID;    
   // Our "Message" class has a "text" key with the body of the message itself                                                                                                                                    
   var messageText = params.text;
-
+Parse.Cloud.useMasterKey();
   var pushQuery = new Parse.Query(Parse.Installation);
   pushQuery.equalTo('deviceType', 'ios');                                                                                                                                        
 
