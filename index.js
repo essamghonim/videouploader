@@ -46,7 +46,13 @@ var api = new ParseServer({
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'essamghonimaucbrunel03121993',
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
-  push: pushConfig,
+  push: {
+    ios: {
+      pfx: __dirname + 'AppCert.p12',
+      bundleId: 'Com.ConnectLtd.PalBuddy',
+      production: true // Dev
+    }
+  },
   filesAdapter: filesAdapter,
   verbose: true,
   serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse'  // needed for Parse Cloud and push notifications
