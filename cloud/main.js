@@ -99,6 +99,8 @@ Parse.Cloud.useMasterKey();
 });
   Parse.Cloud.define("PushNotification", function(request, response) {
       console.log('sending push');
+      var currentPriceQuery = new Parse.Query("UserUpdated");
+      console.log(currentPriceQuery);
     var Installation = new Parse.Query(Parse.Installation);
       console.log(Installation);
 
