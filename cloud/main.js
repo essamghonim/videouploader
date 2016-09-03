@@ -89,10 +89,11 @@ user.id = request.params.ID;
     sound: 'default'
     }
   }, { success: function() {
-      console.log("#### PUSH OK");
+      //console.log("#### PUSH OK");
+  response.success('Push Sent!');
   }, error: function(error) {
-      console.log("#### PUSH ERROR" + error.message);
+      //console.log("#### PUSH ERROR" + error.message);
+  response.success('Error ' + error.message);
   }, useMasterKey: true});
 
-  response.success('success');
 });
