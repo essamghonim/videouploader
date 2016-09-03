@@ -49,8 +49,8 @@ var api = new ParseServer({
   push: {
     ios: {
       pfx: __dirname + '/AppCert.p12',
-      //cert: __dirname + '/AppCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
-      //key: __dirname + '/AppKey.pem', // If not using the .p12 format
+      cert: __dirname + '/AppCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
+      key: __dirname + '/AppKey.pem', // If not using the .p12 format
       bundleId: 'Com.ConnectLtd.PalBuddy',
       production: true // Dev
     }
