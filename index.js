@@ -49,7 +49,7 @@ var api = new ParseServer({
    push: {
     ios: [
       {
-        pfx: __dirname + 'AppCert.p12', // Dev PFX or P12
+        pfx: __dirname + '/AppCert.p12', // Dev PFX or P12
         bundleId: 'Com.ConnectLtd.PalBuddy',
         production: false // Dev
       },
