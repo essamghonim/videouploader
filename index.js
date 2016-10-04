@@ -46,12 +46,19 @@ var api = new ParseServer({
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
   appId: process.env.APP_ID || 'essamghonimaucbrunel03121993',
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
-  push: {
-    ios: {
-      pfx: __dirname + '/AppProductionCertificates.p12',
+   push: {
+    ios: [
+      {
+        pfx: __dirname + 'AppCert.p12', // Dev PFX or P12
+        bundleId: 'Com.ConnectLtd.PalBuddy',
+        production: false // Dev
+      },
+      {
+        pfx: __dirname + '/AppProductionCertificates.p12',
       bundleId: 'Com.ConnectLtd.PalBuddy',
       production: true // Dev
-    }
+      }
+    ]
   },
   //filesAdapter: filesAdapter,
   verbose: true,
