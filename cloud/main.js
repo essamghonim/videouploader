@@ -104,12 +104,6 @@ var messageText = request.params.text;
 Parse.Cloud.useMasterKey();
 var pushQuery = new Parse.Query(Parse.Installation);
 pushQuery.equalTo('user', user);
-var user = new Parse.User();
-user.id = "U6K5Q168o6";
-var groupACL = new Parse.ACL();
-groupACL.setReadAccess(user, true); 
-groupACL.setWriteAccess(user, true);
-pushQuery.ACL = groupACL
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
