@@ -77,8 +77,7 @@ user.id = request.params.ID;
 var messageText = request.params.text;
 Parse.Cloud.useMasterKey();
 var pushQuery = new Parse.Query(Parse.Installation);
-pushQuery.equalTo('user', user);
-pushQuery.limit = 1000;
+pushQuery.equalTo('installationId', '5138ea05-7983-4f55-b757-dca9b9c2d9d6');
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
