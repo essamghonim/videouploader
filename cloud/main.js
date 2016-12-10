@@ -12,7 +12,6 @@ currentPriceQuery.equalTo('user', user);
     currentPriceQuery.find({
         success: function(results) {
             var obj = results[0];
-                console.log(results);
                 error: function (object, error) { 
                   console.log(error.message);
                 }
