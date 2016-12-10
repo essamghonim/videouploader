@@ -1,7 +1,3 @@
-
-Parse.Cloud.define('hello', function(req, res) {
-  res.success(req.params.firstVar + " " + req.params.secondVar);
-});
 Parse.Cloud.define('pushChannelTest', function(request, response) {
 
   // request has 2 parameters: params passed by the client and the authorized user
