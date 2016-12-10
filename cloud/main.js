@@ -2,27 +2,6 @@
 Parse.Cloud.define('hello', function(req, res) {
   res.success(req.params.firstVar + " " + req.params.secondVar);
 });
-Parse.Cloud.define("checkPrice", function(request, response) {
-var user = new Parse.User();
-user.id = request.params.ID;                                                                                                                                    
-var messageText = request.params.text;
-Parse.Cloud.useMasterKey();
-var currentPriceQuery = new Parse.Query(Parse.Installation);
-currentPriceQuery.equalTo('user', user);
-    currentPriceQuery.find({
-        success: function(results) {
-            var obj = results[0];
-                error: function (object, error) { 
-                  console.log(error.message);
-                }
-              });
-        },
-        error: function(error) {
-            console.log("failed");
-        }
-    });
-
-});
 Parse.Cloud.define('pushChannelTest', function(request, response) {
 
   // request has 2 parameters: params passed by the client and the authorized user
