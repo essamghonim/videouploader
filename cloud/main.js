@@ -104,7 +104,7 @@ var messageText = request.params.text;
 Parse.Cloud.useMasterKey();
 var pushQuery = new Parse.Query(Parse.Installation);
 pushQuery.equalTo('user', user);
-pushQuery.limit = 100;
+pushQuery.limit = 1000;
   Parse.Push.send({
     where: pushQuery, // Set our Installation query                                                                                                                                                              
     data: {
