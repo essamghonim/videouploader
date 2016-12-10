@@ -3,16 +3,16 @@ Parse.Cloud.define('hello', function(req, res) {
   res.success(req.params.firstVar + " " + req.params.secondVar);
 });
 Parse.Cloud.define("checkPrice", function(request, response) {
-  var currentPriceQuery = new Parse.Query("UserUpdated");
-    currentPriceQuery.equalTo("username", "Omar Nabil");
+var user = new Parse.User();
+user.id = request.params.ID;                                                                                                                                    
+var messageText = request.params.text;
+Parse.Cloud.useMasterKey();
+var currentPriceQuery = new Parse.Query(Parse.Installation);
+currentPriceQuery.equalTo('user', user);
     currentPriceQuery.find({
         success: function(results) {
             var obj = results[0];
-                obj.set("username", "Pal No Buddy");
-                obj.save(null,{
-                  success: function (object) { 
-                    response.success(object);
-                  }, 
+                console.log(results);
                 error: function (object, error) { 
                   console.log(error.message);
                 }
