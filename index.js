@@ -47,6 +47,10 @@ var api = new ParseServer({
   appId: process.env.APP_ID || 'essamghonimaucbrunel03121993',
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
    push: {
+		android: {
+			senderId: '470404787161', // The Sender ID of GCM
+			apiKey: 'AIzaSyAY2tha30XvHe42Nlwdmv_FUZE69IDzaKE' // The Server API Key of GCM
+		},
     ios: [
       {
         pfx: __dirname + '/HerokuCert.p12', // Dev PFX or P12
