@@ -48,8 +48,8 @@ var api = new ParseServer({
   masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
    push: {
 		android: {
-			senderId: '470404787161', // The Sender ID of GCM
-			apiKey: 'AIzaSyAY2tha30XvHe42Nlwdmv_FUZE69IDzaKE' // The Server API Key of GCM
+			senderId: '704699964050', // The Sender ID of GCM
+			apiKey: 'AIzaSyDwyBCBb68adTv0OhtxE9wps5P435KjT_g' // The Server API Key of GCM
 		},
     ios: [
       {
