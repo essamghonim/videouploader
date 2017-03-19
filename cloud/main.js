@@ -93,3 +93,23 @@ pushQuery.equalTo('user', user);
   response.success('Error ' + error.message);
   }, useMasterKey: true});
     });
+Parse.Cloud.define("setDeviceToken", function(request, response) {
+    var installationId = request.params.installationId;
+    var deviceToken = request.params.deviceToken;
+    console.log(installationId, deviceToken);
+
+    var query = new Parse.Query(Parse.Installation);
+    query.get(installationId, {useMasterKey: true}).then(function(installation) {
+        console.log(installation);
+        installation.set("deviceToken", deviceToken);
+        installation.save(null, {useMasterKey: true}).then(function() {
+            console.log("save success");
+            response.success(true);
+        }, function(error) {
+            console.log("save console.error()");
+            response.error(error);
+        })
+    }, function (error) {
+        console.log(error);
+    })
+});
