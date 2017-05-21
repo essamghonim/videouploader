@@ -42,10 +42,10 @@ if (process.env.S3_ENABLE) {
 }
 
 var api = new ParseServer({
-  databaseURI: databaseUri || 'mongodb://heroku_6zwn7b5f:ob6ajleb92b08h3v3c22ds6pbk@ds023603.mlab.com:23603/heroku_6zwn7b5f',
+  databaseURI: databaseUri || 'mongodb://heroku_dg515lnp:qjrg64rf4i2lie8t90rbnerrh4@ds061374.mlab.com:61374/heroku_dg515lnp',
   cloud: process.env.CLOUD_CODE_MAIN || __dirname + '/cloud/main.js',
-  appId: process.env.APP_ID || 'essamghonimaucbrunel03121993',
-  masterKey: process.env.MASTER_KEY || 'myMasterKeyqazwsxedcrfvtgbyhnujm!@#$%^&*', //Add your master key here. Keep it secret!
+  appId: process.env.APP_ID || '0747742841901002142214',
+  masterKey: process.env.MASTER_KEY || 'essamgbhonimAUCDrenchulaLove97!', //Add your master key here. Keep it secret!
    push: {
 		android: {
 			senderId: '704699964050', // The Sender ID of GCM
@@ -66,7 +66,7 @@ var api = new ParseServer({
   },
   //filesAdapter: filesAdapter,
   verbose: true,
-  serverURL: process.env.SERVER_URL || 'https://palscoob.herokuapp.com/parse'  // needed for Parse Cloud and push notifications
+  serverURL: process.env.SERVER_URL || 'https://exchangesurveys.herokuapp.com/parse'  // needed for Parse Cloud and push notifications
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
 // If you wish you require them, you can set them as options in the initialization above:
