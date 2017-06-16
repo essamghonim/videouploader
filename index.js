@@ -21,7 +21,7 @@ if (process.env.APNS_ENABLE) {
     pushConfig['ios'] = [
         {
             pfx: __dirname + 'XSurveyDev.p12', // P12 file only
-            cert: __dirname + 'XSurveyDevCert', // If not using the .p12 format, the path to the certificate PEM to load from disk
+            cert: __dirname + 'XSurveyDevCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
             key: __dirname + 'XSurveyDevKey.unencrypted.pem', // If not using the .p12 format
             bundleId: 'Connect.Ltd.exchangesurveys',  // change to match bundleId
             production: false // dev certificate
