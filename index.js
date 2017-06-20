@@ -20,10 +20,10 @@ if (process.env.GCM_SENDER_ID && process.env.GCM_API_KEY) {
 if (process.env.APNS_ENABLE) {
     pushConfig['ios'] = [
         {
-            pfx: __dirname + 'XSurveyDev.p12', // P12 file only
-            cert: __dirname + 'XSurveyDevCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
-            key: __dirname + 'XSurveyDevKey.unencrypted.pem', // If not using the .p12 format
-            bundleId: 'Connect.Ltd.exchangesurveys',  // change to match bundleId
+            pfx: __dirname + 'SayHiDevCertificates.p12', // P12 file only
+            cert: __dirname + 'SayHiDevCert.pem', // If not using the .p12 format, the path to the certificate PEM to load from disk
+            key: __dirname + 'SayHiDevKey.unencrypted.pem', // If not using the .p12 format
+            bundleId: 'Lightsome-Apps.SayHi',  // change to match bundleId
             production: false // dev certificate
         }
     ]
@@ -53,8 +53,8 @@ var api = new ParseServer({
 		},
     ios: [
       {
-        pfx: __dirname + '/XSurveyDev.p12', // Dev PFX or P12
-        bundleId: 'Connect.Ltd.exchangesurveys',
+        pfx: __dirname + '/SayHiDevCertificates.p12', // Dev PFX or P12
+        bundleId: 'Lightsome-Apps.SayHi',
         production: false // Dev
       },
       {
