@@ -58,8 +58,8 @@ var api = new ParseServer({
         production: false // Dev
       },
       {
-        pfx: __dirname + '/AppProductionCertificates.p12',
-      bundleId: 'Connect.Ltd.exchangesurveys',
+        pfx: __dirname + '/CupoidProdCertificates.p12',
+      bundleId: 'Lightsome-Apps.SayHi',
       production: true // Dev
       }
     ]
